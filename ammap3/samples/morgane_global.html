@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>amMap example</title>
+
+        <link rel="stylesheet" href="../ammap/ammap.css" type="text/css">
+        <script src="../ammap/ammap.js" type="text/javascript"></script>
+        <!-- map file should be included after ammap.js -->
+		<script src="../ammap/maps/js/worldLow.js" type="text/javascript"></script>
+		<script src="../ammap/themes/black.js" type="text/javascript"></script>
+    <script src="morgane_data.js" type="text/javascript"></script>
+    <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+    <script src="https://www.amcharts.com/lib/3/ammap_amcharts_extension.js"></script>
+    <script src="https://www.amcharts.com/lib/3/maps/js/continentsLow.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+        <script>
+			/*
+			        		although ammap has methos like getAreaCenterLatitude and getAreaCenterLongitude,
+			        		they are not suitable in quite a lot of cases as the center of some countries
+			        		is even outside the country itself (like US, because of Alaska and Hawaii)
+			        		That's why wehave the coordinates stored here
+			        	*/
+
+
+
+			var map;
+			var minBulletSize = 3;
+			var maxBulletSize = 70;
+			var min = Infinity;
+			var max = -Infinity;
+
+      var dataProvider = {
+        mapVar: AmCharts.maps.worldLow,
+        images: [],
+        areas: []
+      }
+
+			AmCharts.theme = AmCharts.themes.black;
+
+			// get min and max values
+			for (var i = 0; i < mapData.length; i++) {
+				var value = mapData[i].value;
+				if (value < min) {
+					min = value;
+				}
+				if (value > max) {
+					max = value;
+				}
+			}
+
+			// build map
+			AmCharts.ready(function() {
+				map = new AmCharts.AmMap();
+
+				map.addTitle("Population of the World in 2011", 14);
+				map.addTitle("source: Gapminder", 11);
+				map.areasSettings = {
+					unlistedAreasColor: "#FFFFFF",
+					unlistedAreasAlpha: 0.1
+				};
+				map.imagesSettings = {
+					balloonText: "<span style='font-size:14px;'><b>[[title]]</b>: [[value]]</span>",
+					alpha: 0.6
+				}
+
+
+
+				// create circle for each country
+
+				// it's better to use circle square to show difference between values, not a radius
+				var maxSquare = maxBulletSize * maxBulletSize * 2 * Math.PI;
+				var minSquare = minBulletSize * minBulletSize * 2 * Math.PI;
+
+				// create circle for each country
+				for (var i = 0; i < mapData.length; i++) {
+					var dataItem = mapData[i];
+					var value = dataItem.value;
+					// calculate size of a bubble
+					var square = (value - min) / (max - min) * (maxSquare - minSquare) + minSquare;
+					if (square < minSquare) {
+						square = minSquare;
+					}
+					var size = 10;//Math.sqrt(square / (Math.PI * 2));
+					var id = dataItem.code;
+
+
+          var icon = "M21.25,8.375V28h6.5V8.375H21.25zM12.25,28h6.5V4.125h-6.5V28zM3.25,28h6.5V12.625h-6.5V28z";
+
+          dataProvider.images.push({
+            title: "North America",
+            latitude: latlong[id].latitude,
+            longitude: latlong[id].longitude,
+            color: "#CC0000",
+            title: dataItem.name,
+            svgPath: icon
+          });
+				}
+
+        dataProvider.images.push({
+          id: "cat1",
+          left: 800,
+          bottom: 15,
+          type: "circle",
+          color: "red",
+          width: 30,
+          selectable: true
+        });
+
+        dataProvider.images.push({
+          id: "cat2",
+          left: 850,
+          bottom: 15,
+          type: "circle",
+          color: "yellow",
+          width: 30,
+          selectable: true
+        });
+
+        dataProvider.images.push({
+          id: "cat3",
+          left: 900,
+          bottom: 15,
+          type: "circle",
+          color: "green",
+          width: 30,
+          selectable: true
+        });
+
+        dataProvider.images.push({
+          id: "cat4",
+          left: 950,
+          bottom: 15,
+          type: "circle",
+          color: "blue",
+          width: 30,
+          selectable: true
+        });
+
+
+
+
+
+				map.dataProvider = dataProvider;
+
+        //map.addListener("click", handleClick);
+        map.addListener("clickMapObject", handleClick);
+
+				map.write("mapdiv");
+
+			});
+
+
+    function handleClick(event) {
+         console.log(event);
+         console.log("Id:" + event.mapObject.id);
+         switch(event.mapObject.id){
+          case "cat1":
+            dataProvider.areas = [];
+            dataProvider.areas.push({
+              id: "US",
+              color: "red"
+            });
+            dataProvider.areas.push({
+              id: "CN",
+              color: "red"
+            });
+            break;
+          case "cat2":
+            dataProvider.areas = [];
+            dataProvider.areas.push({
+              id: "RU",
+              color: "yellow"
+            });
+            dataProvider.areas.push({
+              id: "AU",
+              color: "yellow"
+            });
+            break;
+
+          case "cat3":
+              dataProvider.areas = [];
+              dataProvider.areas.push({
+                id: "CN",
+                color: "green"
+              });
+              dataProvider.areas.push({
+                id: "JP",
+                color: "green"
+              });
+              break;
+
+            case "cat4":
+              dataProvider.areas = [];
+              dataProvider.areas.push({
+                id: "BR",
+                color: "blue"
+                  });
+                  dataProvider.areas.push({
+                    id: "FR",
+                    color: "blue"
+                  });
+                  break;
+         }
+
+         map.dataProvider = dataProvider;
+         map.write("mapdiv");
+
+      }
+
+
+
+		</script>
+    </head>
+	<link rel="stylesheet" href="style.css" type="text/css">
+    <body style="background-color:#222222;">
+        <div id="mapdiv" style="width: 100%; height: 600px;"></div>
+        <!--br>
+        <div style="text-align:center; font-size:14px">
+	        <a href="#" onclick="map.setProjection('winkel3')">Winkel 3</a> |
+	        <a href="#" onclick="map.setProjection('eckert3')">Eckert 3</a> |
+	        <a href="#" onclick="map.setProjection('eckert5')">Eckert 5</a> |
+	        <a href="#" onclick="map.setProjection('eckert6')">Eckert 6</a> |
+	        <a href="#" onclick="map.setProjection('miller')">Miller</a> |
+	        <a href="#" onclick="map.setProjection('equirectangular')">Equirectangular</a> |
+	        <a href="#" onclick="map.setProjection('mercator')">Mercator</a>
+    	</div-->
+
+    </body>
+
+</html>

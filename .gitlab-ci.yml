@@ -1,0 +1,30 @@
+image: "node:latest"
+
+stages:
+- build
+- pages
+
+build:
+  stage: build
+  script:
+  - mkdir public
+  - mv {css,js,lib,plugin,img}/  *.json *.js index.html public/
+  artifacts:
+    name: public
+    expire_in: 31d
+    paths:
+    - public/
+
+pages:
+  stage: pages
+  dependencies:
+    - build
+  script:
+  - ls
+  artifacts:
+    paths:
+      - public/
+  only:
+    - master
+
+
