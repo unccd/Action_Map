@@ -1812,7 +1812,7 @@ var mapData = [{
   "color": "#de4c4f"
 }];
 
-
+/*
 var morganeData = [{
 "code": "DZ",
 "name": "Algeria",
@@ -2335,4 +2335,4 @@ var morganeData = [{
 "cat4": "0",
 "cat5": "0",
 "cat6": "1",
-}];
+}];*/
