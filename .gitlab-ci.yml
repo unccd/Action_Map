@@ -8,7 +8,7 @@ build:
   stage: build
   script:
   - mkdir public
-  - mv {css,js,lib,plugin,img}/  *.json *.js index.html public/
+  - mv {css,js,ammap3,img}/  index.html public/
   artifacts:
     name: public
     expire_in: 31d
