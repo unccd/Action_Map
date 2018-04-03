@@ -2,6 +2,9 @@
 
 flag=0
 filename="/dev/null"
+
+sed -i '/morgane/d' $1
+
 while read line
 do
     if [ $flag == 1 ]

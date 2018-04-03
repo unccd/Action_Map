@@ -62,7 +62,35 @@ svg {
 					alpha: 0.6
 				}
 
-        //createPie();
+        /*for(var i = 0; i < 2; i++){
+          for(var j = 0; j < 2; j++){
+            for(var k = 0; k < 2; k++){
+              for(var l = 0; l < 2; l++){
+                for(var m = 0; m < 2; m++){
+                  for(var n = 0; n < 2; n++){
+                    var myItem= {
+                      cat1: "",
+                      cat2: "",
+                      cat3: "",
+                      cat4: "",
+                      cat5: "",
+                      cat6: ""
+                    };
+                    myItem.cat1=i.toString();
+                    myItem.cat2=j.toString();
+                    myItem.cat3=k.toString();
+                    myItem.cat4=l.toString();
+                    myItem.cat5=m.toString();
+                    myItem.cat6=n.toString();
+                    createPie(myItem);
+                  }
+                }
+              }
+            }
+          }
+        }
+        return;*/
+
 
 
 
@@ -104,7 +132,7 @@ svg {
           left: 800,
           bottom: 15,
           type: "circle",
-          color: "red",
+          color: COL_CAT1,
           width: 30,
           selectable: true
         });
@@ -115,7 +143,7 @@ svg {
           left: 850,
           bottom: 15,
           type: "circle",
-          color: "yellow",
+          color: COL_CAT2,
           width: 30,
           selectable: true
         });
@@ -126,7 +154,7 @@ svg {
           left: 900,
           bottom: 15,
           type: "circle",
-          color: "green",
+          color: COL_CAT3,
           width: 30,
           selectable: true
         });
@@ -137,7 +165,7 @@ svg {
           left: 950,
           bottom: 15,
           type: "circle",
-          color: "blue",
+          color: COL_CAT4,
           width: 30,
           selectable: true
         });
@@ -148,7 +176,7 @@ svg {
           left: 1000,
           bottom: 15,
           type: "circle",
-          color: "orange",
+          color: COL_CAT5,
           width: 30,
           selectable: true
         });
@@ -159,7 +187,7 @@ svg {
           left: 1050,
           bottom: 15,
           type: "circle",
-          color: "fuchsia",
+          color: COL_CAT6,
           width: 30,
           selectable: true
         });
@@ -193,7 +221,7 @@ svg {
               if(dataItem.cat1 > 0){
                   dataProvider.areas.push({
                     id: dataItem.code,
-                    color: "red"
+                    color: COL_CAT1
                   });
               }
             }
@@ -206,7 +234,7 @@ svg {
               if(dataItem.cat2 > 0){
                 dataProvider.areas.push({
                   id: dataItem.code,
-                  color: "yellow"
+                  color: COL_CAT2
                 });
               }
             }
@@ -220,7 +248,7 @@ svg {
               if(dataItem.cat3 > 0){
                 dataProvider.areas.push({
                   id: dataItem.code,
-                  color: "green"
+                  color: COL_CAT3
                 });
               }
             }
@@ -234,7 +262,7 @@ svg {
                 if(dataItem.cat4 > 0){
                   dataProvider.areas.push({
                     id: dataItem.code,
-                    color: "blue"
+                    color: COL_CAT4
                   });
                 }
               }
@@ -248,7 +276,7 @@ svg {
                   if(dataItem.cat5 > 0){
                     dataProvider.areas.push({
                       id: dataItem.code,
-                      color: "orange"
+                      color: COL_CAT5
                     });
                   }
                 }
@@ -262,7 +290,7 @@ svg {
                     if(dataItem.cat6 > 0){
                       dataProvider.areas.push({
                         id: dataItem.code,
-                        color: "fuchsia"
+                        color: COL_CAT6
                       });
                     }
                   }

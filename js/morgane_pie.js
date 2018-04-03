@@ -4,20 +4,28 @@ function getCoordinatesForPercent(percent) {
   return [x, y];
 }
 
+var COL_CAT1="orange";
+var COL_CAT2="yellow";
+var COL_CAT3="red";
+var COL_CAT4="green";
+var COL_CAT5="fuchsia";
+var COL_CAT6="blue";
+
 function createPie(dataItem){
 
 
   var sum = parseInt(dataItem.cat1) + parseInt(dataItem.cat2) + parseInt(dataItem.cat3) + parseInt(dataItem.cat4) + parseInt(dataItem.cat5) + parseInt(dataItem.cat6);
   var name = dataItem.cat1 + dataItem.cat2 + dataItem.cat3 + dataItem.cat4 + dataItem.cat5 + dataItem.cat6;
+  console.log("Sum: " + sum);
   console.log(name);
   //for
   const slices = [
-    { percent: parseInt(dataItem.cat1)/sum, color: 'red' },
-    { percent: parseInt(dataItem.cat2)/sum, color: 'yellow' },
-    { percent: parseInt(dataItem.cat3)/sum, color: 'green' },
-    { percent: parseInt(dataItem.cat4)/sum, color: 'blue' },
-    { percent: parseInt(dataItem.cat5)/sum, color: 'orange' },
-    { percent: parseInt(dataItem.cat6)/sum, color: 'fuchsia' },
+    { percent: parseInt(dataItem.cat1)/sum, color: COL_CAT1 },
+    { percent: parseInt(dataItem.cat2)/sum, color: COL_CAT2 },
+    { percent: parseInt(dataItem.cat3)/sum, color: COL_CAT3 },
+    { percent: parseInt(dataItem.cat4)/sum, color: COL_CAT4 },
+    { percent: parseInt(dataItem.cat5)/sum, color: COL_CAT5 },
+    { percent: parseInt(dataItem.cat6)/sum, color: COL_CAT6 },
   ];
 
   let cumulativePercent = 0;

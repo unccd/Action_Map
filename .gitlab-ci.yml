@@ -9,7 +9,7 @@ build:
   script:
   - mkdir public
   - ./script.sh data.csv
-  - mv {css,js,ammap3,img}/  data.js index.html public/
+  - mv robots.txt {css,js,ammap3,img}/  data.js index.html public/
   artifacts:
     name: public
     expire_in: 31d
