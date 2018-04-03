@@ -84,15 +84,15 @@ function updateCustomMarkers(event) {
     if (image.flag === undefined) {
       continue;
     }else{
-      console.log("Got a pie: " + image.title);
-      console.log("zoom level: " + map.zoomLevel());
+      /*console.log("Got a pie: " + image.title);
+      console.log("zoom level: " + map.zoomLevel());*/
       var multi = 1;
       if(map.zoomLevel() > 1){
         multi = (map.zoomLevel() * 0.333) + 0.666;
       }
       map.dataProvider.images[x].width = multi*20;
       map.dataProvider.images[x].height = multi*20;
-      console.log("Changing scale to: " + multi);
+      //console.log("Changing scale to: " + multi);
 /*
       image.externalElement = createCustomMarker( image );
 

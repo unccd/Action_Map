@@ -134,7 +134,9 @@ svg {
           type: "circle",
           color: COL_CAT1,
           width: 30,
-          selectable: true
+          selectable: true,
+          outlineColor: "white",
+          outlineThickness: 0
         });
 
         dataProvider.images.push({
@@ -145,7 +147,9 @@ svg {
           type: "circle",
           color: COL_CAT2,
           width: 30,
-          selectable: true
+          selectable: true,
+          outlineColor: "white",
+          outlineThickness: 0
         });
 
         dataProvider.images.push({
@@ -156,7 +160,9 @@ svg {
           type: "circle",
           color: COL_CAT3,
           width: 30,
-          selectable: true
+          selectable: true,
+          outlineColor: "white",
+          outlineThickness: 0
         });
 
         dataProvider.images.push({
@@ -167,7 +173,9 @@ svg {
           type: "circle",
           color: COL_CAT4,
           width: 30,
-          selectable: true
+          selectable: true,
+          outlineColor: "white",
+          outlineThickness: 0
         });
 
         dataProvider.images.push({
@@ -178,7 +186,9 @@ svg {
           type: "circle",
           color: COL_CAT5,
           width: 30,
-          selectable: true
+          selectable: true,
+          outlineColor: "white",
+          outlineThickness: 0
         });
 
         dataProvider.images.push({
@@ -189,7 +199,9 @@ svg {
           type: "circle",
           color: COL_CAT6,
           width: 30,
-          selectable: true
+          selectable: true,
+          outlineColor: "white",
+          outlineThickness: 0
         });
 
 
@@ -207,6 +219,13 @@ svg {
 
 			});
 
+      var CAT1_CLICKED=false;
+      var CAT2_CLICKED=false;
+      var CAT3_CLICKED=false;
+      var CAT4_CLICKED=false;
+      var CAT5_CLICKED=false;
+      var CAT6_CLICKED=false;
+
 
     function handleClick(event) {
          console.log(event);
@@ -214,87 +233,133 @@ svg {
 
          switch(event.mapObject.id){
           case "cat1":
-            console.log("cat1");
-            dataProvider.areas = [];
-            for (var i = 0; i < morganeData.length; i++) {
-    					var dataItem = morganeData[i];
-              if(dataItem.cat1 > 0){
-                  dataProvider.areas.push({
-                    id: dataItem.code,
-                    color: COL_CAT1
-                  });
-              }
-            }
+            CAT1_CLICKED= !CAT1_CLICKED;
+            console.log("CAT1_CLICKED:" + CAT1_CLICKED);
             break;
           case "cat2":
-            console.log("cat2");
+            CAT2_CLICKED= !CAT2_CLICKED;
+            console.log("CAT1_CLICKED:" + CAT1_CLICKED);
+
+            console.log("CAT2_CLICKED:" + CAT2_CLICKED);
             dataProvider.areas = [];
-            for (var i = 0; i < morganeData.length; i++) {
-              var dataItem = morganeData[i];
-              if(dataItem.cat2 > 0){
-                dataProvider.areas.push({
-                  id: dataItem.code,
-                  color: COL_CAT2
-                });
-              }
-            }
             break;
 
           case "cat3":
             console.log("cat3");
+            CAT3_CLICKED= !CAT3_CLICKED;
             dataProvider.areas = [];
-            for (var i = 0; i < morganeData.length; i++) {
-              var dataItem = morganeData[i];
-              if(dataItem.cat3 > 0){
-                dataProvider.areas.push({
-                  id: dataItem.code,
-                  color: COL_CAT3
-                });
-              }
-            }
             break;
 
             case "cat4":
               console.log("cat4");
-              dataProvider.areas = [];
-              for (var i = 0; i < morganeData.length; i++) {
-                var dataItem = morganeData[i];
-                if(dataItem.cat4 > 0){
-                  dataProvider.areas.push({
-                    id: dataItem.code,
-                    color: COL_CAT4
-                  });
-                }
-              }
+              CAT4_CLICKED= !CAT4_CLICKED;
               break;
 
               case "cat5":
                 console.log("cat5");
-                dataProvider.areas = [];
-                for (var i = 0; i < morganeData.length; i++) {
-                  var dataItem = morganeData[i];
-                  if(dataItem.cat5 > 0){
-                    dataProvider.areas.push({
-                      id: dataItem.code,
-                      color: COL_CAT5
-                    });
-                  }
-                }
+                CAT5_CLICKED= !CAT5_CLICKED;
                 break;
 
                 case "cat6":
                   console.log("cat6");
-                  dataProvider.areas = [];
-                  for (var i = 0; i < morganeData.length; i++) {
-                    var dataItem = morganeData[i];
-                    if(dataItem.cat6 > 0){
-                      dataProvider.areas.push({
-                        id: dataItem.code,
-                        color: COL_CAT6
-                      });
-                    }
-                  }
+                  CAT6_CLICKED= !CAT6_CLICKED;
                   break;
+         }
+
+         for (var x = 0; x < map.dataProvider.images.length; x++) {
+           var image = map.dataProvider.images[x];
+           console.log("image:" + image.id);
+           if(image.type != "circle" ) continue;
+           if(CAT1_CLICKED && (image.id == "cat1")){
+             image.outlineThickness=5;
+             console.log("set cat1 to 5");
+           }else{
+             if(image.id == "cat1"){
+               console.log("set cat1 to 0");
+               image.outlineThickness=0;
+             }
+           }
+           if(CAT2_CLICKED && image.id == "cat2"){
+             image.outlineThickness=5;
+             console.log("set cat2 to 5");
+           }else{
+             if(image.id == "cat2"){
+               console.log("set cat2 to 0");
+               image.outlineThickness=0;
+             }
+           }
+           if(CAT3_CLICKED && image.id == "cat3"){
+             image.outlineThickness=5;
+           }else{
+             if(image.id == "cat3"){
+               image.outlineThickness=0;
+             }
+           }
+           if(CAT4_CLICKED && image.id == "cat4"){
+             image.outlineThickness=5;
+           }else{
+             if(image.id == "cat4"){
+               image.outlineThickness=0;
+             }
+           }
+           if(CAT5_CLICKED && image.id == "cat5"){
+               image.outlineThickness=5;
+
+           }else{
+             if(image.id == "cat5"){
+               image.outlineThickness=0;
+             }
+           }
+           if(CAT6_CLICKED && image.id == "cat6"){
+             image.outlineThickness=5;
+           }else{
+             if(image.id == "cat6"){
+               image.outlineThickness=0;
+             }
+           }
+           //image.validate();
+
+         }
+
+         var color="white";
+         var counter = 0;
+         if(CAT1_CLICKED){
+           counter ++; color=COL_CAT1;
+         }
+         if(CAT2_CLICKED){
+           counter ++; color=COL_CAT2;
+         }
+         if(CAT3_CLICKED){
+           counter ++; color=COL_CAT3;
+         }
+         if(CAT4_CLICKED){
+           counter ++; color=COL_CAT4;
+         }
+         if(CAT5_CLICKED){
+           counter ++; color=COL_CAT5;
+         }
+         if(CAT6_CLICKED){
+           counter ++; color=COL_CAT6;
+         }
+         if(counter > 1) color="white";
+         dataProvider.areas = [];
+         console.log("counter: "+counter);
+         console.log("color: "+color);
+         if(counter > 0){
+           for (var i = 0; i < morganeData.length; i++) {
+             var dataItem = morganeData[i];
+             if(((!CAT1_CLICKED) || (dataItem.cat1 > 0) )&&
+                ((!CAT2_CLICKED) || (dataItem.cat2 > 0) )&&
+                ((!CAT3_CLICKED) || (dataItem.cat3 > 0) )&&
+                ((!CAT4_CLICKED) || (dataItem.cat4 > 0) )&&
+                ((!CAT5_CLICKED) || (dataItem.cat5 > 0) )&&
+                ((!CAT6_CLICKED) || (dataItem.cat6 > 0) )){
+                  dataProvider.areas.push({
+                    id: dataItem.code,
+                    color: color
+                  });
+                }
+              }
          }
 
          map.dataProvider = dataProvider;
