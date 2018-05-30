@@ -10,6 +10,7 @@ var COL_CAT3="red";
 var COL_CAT4="green";
 var COL_CAT5="fuchsia";
 var COL_CAT6="blue";
+var COL_CAT7="YellowGreen";
 
 function createPie(dataItem){
 

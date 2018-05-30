@@ -62,36 +62,6 @@ svg {
 					alpha: 0.6
 				}
 
-        /*for(var i = 0; i < 2; i++){
-          for(var j = 0; j < 2; j++){
-            for(var k = 0; k < 2; k++){
-              for(var l = 0; l < 2; l++){
-                for(var m = 0; m < 2; m++){
-                  for(var n = 0; n < 2; n++){
-                    var myItem= {
-                      cat1: "",
-                      cat2: "",
-                      cat3: "",
-                      cat4: "",
-                      cat5: "",
-                      cat6: ""
-                    };
-                    myItem.cat1=i.toString();
-                    myItem.cat2=j.toString();
-                    myItem.cat3=k.toString();
-                    myItem.cat4=l.toString();
-                    myItem.cat5=m.toString();
-                    myItem.cat6=n.toString();
-                    createPie(myItem);
-                  }
-                }
-              }
-            }
-          }
-        }
-        return;*/
-
-
 
 
         for (var i = 0; i < morganeData.length; i++) {
@@ -107,9 +77,10 @@ svg {
           if(dataItem.cat1 == "1") description+=" Drought Initiative,";
           if(dataItem.cat2 == "1") description+=" LDN Transformative projects,";
           if(dataItem.cat3 == "1") description+=" 3S,";
-          if(dataItem.cat4 == "1") description+=" Greening Dryland Partnerships";
+          if(dataItem.cat4 == "1") description+=" Greening Dryland Partnerships,";
           if(dataItem.cat5 == "1") description+=" Gender,";
           if(dataItem.cat6 == "1") description+=" LDN Med,";
+          if(dataItem.cat7 == "1") description+=" 'Great Green Wall, ";
 
 
           dataProvider.images.push({
@@ -204,9 +175,18 @@ svg {
           outlineThickness: 0
         });
 
-
-
-
+        dataProvider.images.push({
+          id: "cat7",
+          title: "'Great Green Wall",
+          left: 1100,
+          bottom: 15,
+          type: "circle",
+          color: COL_CAT7,
+          width: 30,
+          selectable: true,
+          outlineColor: "white",
+          outlineThickness: 0
+        });
 
 				map.dataProvider = dataProvider;
 
@@ -225,6 +205,7 @@ svg {
       var CAT4_CLICKED=false;
       var CAT5_CLICKED=false;
       var CAT6_CLICKED=false;
+      var CAT7_CLICKED=false;
 
 
     function handleClick(event) {
@@ -235,12 +216,11 @@ svg {
           case "cat1":
             CAT1_CLICKED= !CAT1_CLICKED;
             console.log("CAT1_CLICKED:" + CAT1_CLICKED);
+            dataProvider.areas = [];
             break;
           case "cat2":
             CAT2_CLICKED= !CAT2_CLICKED;
             console.log("CAT1_CLICKED:" + CAT1_CLICKED);
-
-            console.log("CAT2_CLICKED:" + CAT2_CLICKED);
             dataProvider.areas = [];
             break;
 
@@ -250,22 +230,32 @@ svg {
             dataProvider.areas = [];
             break;
 
-            case "cat4":
-              console.log("cat4");
-              CAT4_CLICKED= !CAT4_CLICKED;
-              break;
+          case "cat4":
+            console.log("cat4");
+            CAT4_CLICKED= !CAT4_CLICKED;
+            dataProvider.areas = [];
+            break;
 
-              case "cat5":
-                console.log("cat5");
-                CAT5_CLICKED= !CAT5_CLICKED;
-                break;
+          case "cat5":
+            console.log("cat5");
+            CAT5_CLICKED= !CAT5_CLICKED;
+            dataProvider.areas = [];
+            break;
 
-                case "cat6":
-                  console.log("cat6");
-                  CAT6_CLICKED= !CAT6_CLICKED;
-                  break;
+          case "cat6":
+            console.log("cat6");
+            CAT6_CLICKED= !CAT6_CLICKED;
+            dataProvider.areas = [];
+            break;
+
+          case "cat7":
+            console.log("cat7");
+            CAT7_CLICKED= !CAT7_CLICKED;
+            dataProvider.areas = [];
+            break;
          }
 
+         //Select coresponding button(s) as selected
          for (var x = 0; x < map.dataProvider.images.length; x++) {
            var image = map.dataProvider.images[x];
            console.log("image:" + image.id);
@@ -317,10 +307,18 @@ svg {
                image.outlineThickness=0;
              }
            }
-           //image.validate();
+           if(CAT7_CLICKED && image.id == "cat7"){
+             image.outlineThickness=5;
+           }else{
+             if(image.id == "cat7"){
+               image.outlineThickness=0;
+             }
+           }
 
          }
 
+
+         //chose region selection color
          var color="white";
          var counter = 0;
          if(CAT1_CLICKED){
@@ -341,6 +339,9 @@ svg {
          if(CAT6_CLICKED){
            counter ++; color=COL_CAT6;
          }
+         if(CAT7_CLICKED){
+           counter ++; color=COL_CAT7;
+         }
          if(counter > 1) color="white";
          dataProvider.areas = [];
          console.log("counter: "+counter);
@@ -348,12 +349,14 @@ svg {
          if(counter > 0){
            for (var i = 0; i < morganeData.length; i++) {
              var dataItem = morganeData[i];
+             console.log("Cat7:" + dataItem.cat7);
              if(((!CAT1_CLICKED) || (dataItem.cat1 > 0) )&&
                 ((!CAT2_CLICKED) || (dataItem.cat2 > 0) )&&
                 ((!CAT3_CLICKED) || (dataItem.cat3 > 0) )&&
                 ((!CAT4_CLICKED) || (dataItem.cat4 > 0) )&&
                 ((!CAT5_CLICKED) || (dataItem.cat5 > 0) )&&
-                ((!CAT6_CLICKED) || (dataItem.cat6 > 0) )){
+                ((!CAT6_CLICKED) || (dataItem.cat6 > 0) )&&
+                ((!CAT7_CLICKED) || (dataItem.cat7 > 0) )){
                   dataProvider.areas.push({
                     id: dataItem.code,
                     color: color
@@ -362,12 +365,8 @@ svg {
               }
          }
 
+         //write the map
          map.dataProvider = dataProvider;
-
-
-
-
-
          map.write("mapdiv");
 
       }
@@ -379,17 +378,6 @@ svg {
 	<link rel="stylesheet" href="style.css" type="text/css">
     <body style="background-color:#222222;">
         <div id="mapdiv" style="width: 100%; height: 800px;"></div>
-        <!--br>
-        <div style="text-align:center; font-size:14px">
-	        <a href="#" onclick="map.setProjection('winkel3')">Winkel 3</a> |
-	        <a href="#" onclick="map.setProjection('eckert3')">Eckert 3</a> |
-	        <a href="#" onclick="map.setProjection('eckert5')">Eckert 5</a> |
-	        <a href="#" onclick="map.setProjection('eckert6')">Eckert 6</a> |
-	        <a href="#" onclick="map.setProjection('miller')">Miller</a> |
-	        <a href="#" onclick="map.setProjection('equirectangular')">Equirectangular</a> |
-	        <a href="#" onclick="map.setProjection('mercator')">Mercator</a>
-    	</div-->
-
     </body>
 
 </html>

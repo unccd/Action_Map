@@ -28,7 +28,7 @@ do
 
 
     fi
-    for i in {1..6}
+    for i in {1..7}
     do
         let j=$i+1
         category=`echo $line | cut -d ',' -f $j` >> $output
