@@ -1,6 +1,7 @@
 #!/bin/bash
 
 output="data.js"
+#output="/dev/stdout"
 
 echo "var morganeData = [{" > $output
 
@@ -31,15 +32,18 @@ do
     for i in {1..7}
     do
         let j=$i+1
+        echo $line
         category=`echo $line | cut -d ',' -f $j` >> $output
-        #echo "category: $category"
-        if [[ -z "${category// }" ]]
+        #remove whitespaces, end of line characters etc.
+        category=${category//[^[:alnum:]]/}
+        echo "category: ${category}#"
+        if [[ $category == "1" ]]
         then
-            #echo "cat${i}:0"
-            echo "\"cat${i}\": \"0\","  >> $output
-        else
-            #echo "cat${i}:1"
+            echo "cat${i}:1"
             echo "\"cat${i}\": \"1\","  >> $output
+        else
+            echo "cat${i}:0"
+            echo "\"cat${i}\": \"0\","  >> $output
         fi
     done
 
