@@ -1,33 +1,26 @@
 #!/bin/bash
 
-flag=0
-filename="/dev/null"
-
-sed -i '/morgane/d' $1
-
-while read line
+for i in 0 1
 do
-    if [ $flag == 1 ]
-    then
-        echo "</svg>" >> $filename
-        filename="${line}.svg"
-        echo filename="${filename}"
-        flag=0
-        echo "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"-1 -1 2 2\">" > $filename
-        continue
-    fi
-    
-    echo $line | grep "Sum" > /dev/null
-    if [ $? == 0 ]
-    then
-        flag=1 
-        continue    
-    fi
-
-    echo $line | grep "path" > /dev/null
-    if [ $? == 0 ]
-    then
-        echo $line "</path>" >> $filename
-    fi
-    
-done < $1
+    for j in 0 1
+    do
+        for k in 0 1
+        do
+            for l in 0 1
+            do
+                for m in 0 1
+                do
+                    for n in 0 1
+                    do
+                        for o in 0 1
+                        do
+                            echo create $i $j $k $l $m $n $o
+                            python createSVG.py $i $j $k $l $m $n $o
+                        done
+                    done
+                done
+            done
+        done
+    done
+done
+                        

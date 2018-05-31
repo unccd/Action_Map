@@ -1,0 +1,6 @@
+
+<svg  xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d='M150,150 L50,150 A100,100 0 0,1 199 63 L150,150' style='stroke:#660000; fill:orange;'/><path d='M150,150 L199,63 A100,100 0 0,1 199 63 L150,150' style='stroke:#660000; fill:yellow;'/><path d='M150,150 L199,63 A100,100 0 0,1 200 236 L150,150' style='stroke:#660000; fill:red;'/><path d='M150,150 L200,236 A100,100 0 0,1 200 236 L150,150' style='stroke:#660000; fill:green;'/><path d='M150,150 L200,236 A100,100 0 0,1 50 150 L150,150' style='stroke:#660000; fill:fuchsia;'/><path d='M150,150 L50,150 A100,100 0 0,1 50 150 L150,150' style='stroke:#660000; fill:blue;'/><path d='M150,150 L50,150 A100,100 0 0,1 50 150 L150,150' style='stroke:#660000; fill:greenyellow;'/>
+<!--  <circle cx="150" cy="150" r="100" style="stroke:#006600; fill:none;"/> -->
+</svg>
