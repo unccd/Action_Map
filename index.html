@@ -52,7 +52,7 @@ svg {
 			AmCharts.ready(function() {
 				map = new AmCharts.AmMap();
 
-				map.addTitle("UNCCD Action", 14);
+				map.addTitle("UNCCD Actions", 18, "white");
 				map.areasSettings = {
 					unlistedAreasColor: "#FFFFFF",
 					unlistedAreasAlpha: 0.1
@@ -104,6 +104,22 @@ svg {
           bottom: 15,
           type: "circle",
           color: COL_CAT1,
+          width: 30,
+          selectable: true,
+          outlineColor: "white",
+          outlineThickness: 0
+        });
+
+
+        dataProvider.images.push({
+          id: "label1",
+          title: "Drought Initiative",
+          balloonText: "[[title]]: lorem ipsum lorem ipsu lorem ipsum",
+          label: "halo",
+          labelColor: "white",
+          left: 400,
+          bottom: 15,
+          color: "white",
           width: 30,
           selectable: true,
           outlineColor: "white",
@@ -211,6 +227,9 @@ svg {
     function handleClick(event) {
          console.log(event);
          console.log("Id:" + event.mapObject.id);
+
+         map.rollOverMapObject(event.mapObject);
+
 
          switch(event.mapObject.id){
           case "cat1":
