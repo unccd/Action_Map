@@ -1,0 +1,15 @@
+#description_inner {
+   text-align: left;
+   color: white;
+   background-color: Gray;
+   width: 15%;
+   opacity: 0.8;
+   border-style: solid;
+   border-color: gray;
+   border-radius: 5px;
+   font-family: "Times New Roman", Times, serif;
+}
+
+#description{
+  display: none;
+}

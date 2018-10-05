@@ -63,7 +63,20 @@ function createPie(dataItem){
   });
 }
 
+function showBaloon(event){
+  console.log("Rolled over " + event.mapObject.id)
 
+}
+
+function reallyHide(){
+  console.log("really hidden")
+}
+
+function hideBaloon(event){
+  console.log("Rolled out " + event.mapObject.id)
+  setTimeout(reallyHide, 1500);
+
+}
 
 
 
