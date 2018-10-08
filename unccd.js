@@ -52,7 +52,7 @@ AmCharts.ready(function() {
     if(dataItem.cat3 == "1") description+=" 3S,";
     if(dataItem.cat4 == "1") description+=" Greening Dryland Partnerships,";
     if(dataItem.cat5 == "1") description+=" Gender,";
-    if(dataItem.cat6 == "1") description+=" LDN Med,";
+    if(dataItem.cat6 == "1") description+=" LDN-TSP,";
     if(dataItem.cat7 == "1") description+=" 'Great Green Wall, ";
 
 
