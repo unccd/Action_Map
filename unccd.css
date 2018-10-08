@@ -1,5 +1,4 @@
 #description_inner {
-   text-align: left;
    color: white;
    background-color: Gray;
    width: 15%;
@@ -9,8 +8,15 @@
    border-radius: 5px;
    font-family: sans-serif, "Times New Roman", Times, serif;
    overflow: auto;
+   position: fixed;
+   bottom: 0;
+   left: 0;
 }
 
 #description{
   display: none;
+  position: fixed;
+  bottom: 0;
+  left: 15%;
+
 }

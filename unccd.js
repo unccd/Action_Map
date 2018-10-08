@@ -73,7 +73,7 @@ AmCharts.ready(function() {
   dataProvider.images.push({
     id: "cat1",
     title: "Drought Initiative",
-    description: "<a href=http://www.google.com>Drought Initiative</a>: Description",
+    description: "<a href=https://unccd.sharepoint.com/GM/DI/SitePages/Home.aspx>Drought Initiative</a>: Parties at COP 13 requested the secretariat and other UNCCD institutions and bodies to implement a drought initiative in the next biennium which proposes concrete action on drought preparedness systems to boost the resilience of people, communities and ecosystems against droughts. In 2018, 44 countries from all regions of the world are part of this initiative.",
     left: 800,
     bottom: 15,
     type: "circle",
@@ -87,8 +87,8 @@ AmCharts.ready(function() {
 
   dataProvider.images.push({
     id: "cat2",
-    title: "LDN Transformative projects",
-    description: "<a href=http://www.google.com>LDN Transformative projects</a>",
+    title: "LDN Transformative Projects and Programmes",
+    description: "<a href=https://unccd.sharepoint.com/GM/LDNISP/TPP/SitePages/Home.aspx>LDN Transformative Projects and Programmes</a>: Moving towards LDN implementation to achieve SDGs 15.3. and/or LDN targets, the GM is currently supporting countries to design LDN Transformative Projects and Programmes (TPP). The TPP team provides direct assistance to develop project ideas into project concept note / initial proposals that can be used as the basis of full fledge project proposals, to be mainly submitted to GCF, GEF and Adaptation Fund.",
     left: 850,
     bottom: 15,
     type: "circle",
@@ -101,8 +101,8 @@ AmCharts.ready(function() {
 
   dataProvider.images.push({
     id: "cat3",
-    title: "3S",
-    description: "<a href=http://www.google.com>3S</a>",
+    title: "3S Initiative",
+    description: "<a href=https://unccd.sharepoint.com/ERPA/3Sinitiative/SitePages/Home.aspx>3S Initiative</a>: The 3S initiative aims at stabilizing “at risk” areas by creating land-based green jobs for the most vulnerable populations through investments in large scale on land rehabilitation and sustainable land management. The Initiative aims to create 2 million jobs and to rehabilitate 10 million hectares in Africa by 2025.",
     left: 900,
     bottom: 15,
     type: "circle",
@@ -115,8 +115,8 @@ AmCharts.ready(function() {
 
   dataProvider.images.push({
     id: "cat4",
-    title: "Greening Dryland Partnerships",
-    description: "<a href=http://www.google.com>Greening Dryland Partnerships</a>",
+    title: "Greening Drylands Partnership",
+    description: "<a href=http://english.forest.go.kr/newkfsweb/html/EngHtmlPage.do?pg=/esh/intl/UI_KFS_0302_010100.html&mn=ENG_14_03_02>Greening Drylands Partnership</a>: Under the Changwon Initiative, the Greening Drylands Partnership (GDP) Project aims to provide support to developing countries to promote action programmes for reversing desertification, land degradation and drought (DLDD), reforestation and forest rehabilitation in degraded lands.",
     left: 950,
     bottom: 15,
     type: "circle",
@@ -130,7 +130,7 @@ AmCharts.ready(function() {
   dataProvider.images.push({
     id: "cat5",
     title: "Gender",
-    description: "<a href=http://www.google.com>Gender</a>",
+    description: "<a href=https://unccd.sharepoint.com/GM/LDNISP/TPP/SitePages/Home.aspx>Gender</a>: UN Women / IUCN are currently providing support to mainstream gender in several projects proposals, part of the LDN TPP. This includes capacity building / finalizing writing project concept note workshop and the provision of a help desk to support gender mainstreaming.",
     left: 1000,
     bottom: 15,
     type: "circle",
@@ -143,8 +143,8 @@ AmCharts.ready(function() {
 
   dataProvider.images.push({
     id: "cat6",
-    title: "LDN Med",
-    description: "<a href=http://www.google.com>LDN Med</a>",
+    title: "LDN-TSP",
+    description: "<a href=https://unccd.sharepoint.com/GM/LDNTSP/SitePages/Home.aspx>LDN-TSP</a>: The UNCCD is supporting interested countries in the national LDN target setting process, including the definition of national baselines, targets and associated measures to achieve LDN by 2030 through the LDN Target Setting Programme (TSP). Currently, there are 119 countries participating in the LDN TSP.",
     left: 1050,
     bottom: 15,
     type: "circle",
@@ -158,7 +158,7 @@ AmCharts.ready(function() {
   dataProvider.images.push({
     id: "cat7",
     title: "'Great Green Wall",
-    description: "<a href=http://www.google.com>Great Green Wall</a>",
+    description: "<a href=https://unccd.sharepoint.com/GM/GreatGreenWall/SitePages/Home.aspx>Great Green Wall</a>: Launched in 2007, the GGW initiative aims to restore Africa’s degraded landscapes and in the process transform millions of lives in one of the world’s poorest regions, the Sahel. The GGW is already boosting food security and resilience to climate change, whilst creating thousands of jobs for the many communities who live along its path, especially women and young people. Moreover, it promises to be a compelling solution to the many urgent threats that plague the people of this region – notably drought, famine, conflict and migration.",
     left: 1100,
     bottom: 15,
     type: "circle",

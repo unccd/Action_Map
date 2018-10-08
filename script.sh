@@ -12,6 +12,7 @@ do
     country=`echo $line | cut -d ',' -f 1` >> $output
 
     country=${country}
+    echo "Country: $country"
     if [[ -z "${country}" ]]
     then
         continue
